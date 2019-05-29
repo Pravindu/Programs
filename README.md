@@ -1,5 +1,7 @@
 # Programs
+
 //Pentagonal Numbers
+
 class Main {  
   public static int PentagonalNumber(int num) {
     int tot=1;
@@ -9,7 +11,9 @@ class Main {
     return tot;    
   }   
 }
+
 //KaprekarsConstant
+
 class Main {  
   public static int KaprekarsConstant(int num) {
     int[] numArray = {num / 1000, num % 1000 / 100, num % 1000 % 100 / 10, num % 1000 % 100 % 10};
@@ -33,3 +37,50 @@ class Main {
     }else{
         return 1+KaprekarsConstant(constant);
     }
+    
+    //String Comparison
+    
+    class MyClass {
+    public static void main(String[ ] args) {
+        String str="ve9?r?r?19";
+        int pair=0;
+        int num=0;
+        int bet=0;
+        int len=str.length();
+        char [] strarr= new char[len];
+    
+        for (int x=0;x<len;x++){
+            strarr[x]=str.charAt(x);
+        }
+        for (int y=0;y<len;y++){
+            int current=Character.getNumericValue(strarr[y]);
+            if ((current>=0) && (current<=9)){
+                bet=0;
+                int num1=Character.getNumericValue(strarr[y]);
+                for(int z=y+1;z<len;z++){
+                    int num2=Character.getNumericValue(strarr[z]);
+                    if ((num1+num2)==10){
+                        pair+=1;
+                        for(int c=y+1;c<z;c++){
+                            String qus=Character.toString(strarr[c]);
+                            if (qus.equals("?")){
+                                bet+=1;
+                                System.out.println(bet);
+                                if (bet==3){
+                                    num+=1;
+                                }
+                            }
+                        }
+                    }    
+                }   
+            }
+        }
+        System.out.println(num);
+        System.out.println(pair);
+        if (pair==num && pair!=0){
+            System.out.println("true");
+        }else{
+            System.out.println("false");
+        }
+    }
+}
